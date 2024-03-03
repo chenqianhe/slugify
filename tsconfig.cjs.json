@@ -1,0 +1,9 @@
+{
+  "compilerOptions": {
+    "module": "CommonJS",
+    "outDir": "./dist/cjs",
+    "declaration": true,
+    "target": "es5"
+  },
+  "include": ["src"]
+}
