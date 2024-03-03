@@ -2,6 +2,10 @@
   "name": "url-slug-generator",
   "version": "1.0.0",
   "description": "Format string to slug",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chenqianhe/slugify.git"
+  },
   "main": "dist/cjs/slugify.js",
   "module": "dist/esm/slugify.js",
   "types": "dist/esm/slugify.d.ts",
