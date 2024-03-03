@@ -1,20 +1,24 @@
 # URL Slug Generator
 
-A simple TypeScript library for converting strings into URL-friendly slugs.
+A simple TypeScript library for converting strings into URL-friendly slugs, with support for ASCII conversion, custom replacements, word removal, and length restrictions.
 
-## Description
+## Features
 
-The URL Slug Generator helps you easily convert any string into a format suitable for URLs. It automatically removes special characters, converts all text to lowercase, and replaces spaces with hyphens, making it an ideal tool for creating clean, readable URLs.
+- Converts strings to URL-friendly slugs.
+- Transforms non-ASCII characters to their ASCII equivalents using `unidecode`.
+- Allows for custom replacement characters instead of the default hyphen.
+- Supports removal of specified words from the input string.
+- Enforces maximum slug length constraints.
 
 ## Installation
 
-Install with npm:
+Install the package using npm:
 
 ```bash
 npm install url-slug-generator
 ```
 
-Or with yarn:
+Or using yarn:
 
 ```bash
 yarn add url-slug-generator
@@ -22,33 +26,48 @@ yarn add url-slug-generator
 
 ## Usage
 
-First, import `url-slug-generator`:
+First, import the `generateSlug` function from the package:
 
 ```typescript
-import slugify from 'url-slug-generator';
+import { generateSlug } from 'url-slug-generator';
 ```
 
-Then, use the `slugify` function to convert any string into a slug:
+Then, use the function to convert any string into a slug:
 
 ```typescript
-const mySlug = slugify("Hello World!");
-console.log(mySlug); // Outputs: "hello-world"
+const options = {
+  replacement: '-', // Default replacement is '-'
+  removeWords: ['a', 'the'], // Words to be removed from the input string
+  lower: true, // Convert to lowercase
+  maxLength: 50, // Maximum length of the slug
+};
+
+const slug = generateSlug("Hello, world! This is a test.", options);
+console.log(slug); // Outputs: "hello-world-this-is-test"
 ```
 
 ## API Reference
 
-### slugify(text: string): string
+### `generateSlug(text: string, options?: SlugifyOptions): string`
 
-Converts the provided string `text` into a URL-friendly slug.
+Generates a URL-friendly slug from the provided text.
 
-- **Parameters**:
-    - `text`: The string to be converted.
-- **Returns**: The converted slug string.
+#### Parameters
+
+- `text` (string): The text to slugify.
+- `options` (SlugifyOptions, optional): Configuration options for slug generation.
+
+##### `SlugifyOptions`
+
+- `replacement` (string, optional): The character to replace spaces with, defaults to '-'.
+- `removeWords` (string[], optional): An array of words to remove from the input text.
+- `lower` (boolean, optional): Whether to convert the text to lowercase.
+- `maxLength` (number, optional): The maximum length of the generated slug.
 
 ## Contributing
 
-Contributions are welcome! Please fork this repository and submit pull requests to propose additions or fixes.
+Contributions are welcome! Please fork the repository and submit a pull request with your proposed changes or enhancements.
 
 ## License
 
-This project is licensed under the MIT License. For more details, see the LICENSE file.
+This project is licensed under the MIT License - see the LICENSE file for details.

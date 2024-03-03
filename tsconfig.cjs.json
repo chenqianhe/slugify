@@ -3,7 +3,10 @@
     "module": "CommonJS",
     "outDir": "./dist/cjs",
     "declaration": true,
-    "target": "es5"
+    "target": "es5",
+    "lib": ["es2017"],
+    "esModuleInterop": true
   },
-  "include": ["src"]
+  "include": ["src"],
+  "exclude": ["node_modules", "dist"]
 }
